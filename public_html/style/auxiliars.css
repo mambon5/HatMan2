@@ -23,3 +23,15 @@ and open the template in the editor.
     top:140px;
     
 }
+p{
+    position: absolute;
+    top:180px;
+}
+form{
+    position: absolute;
+    top: 180px;
+}
+button{
+    position:absolute;
+    top:200px;
+}
