@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>Use the XMLHttpRequest to get the content of a file.</h2>
+<p>The content is written in JSON format, and can easily be converted into a JavaScript object.</p>
+
+<p id="demo"></p>
+
+<select id="select" size="3" onclick="loadtxt()">
+  <option>0</option>
+  <option>1</option>
+  <option>2</option>
+</select>
+
+<script>
+var demo = document.getElementById("demo");
+var select = document.getElementById("select");
+var xmlhttp = new XMLHttpRequest();
+
+function loadtxt(){
+    xmlhttp.onreadystatechange = function() {
+      if (this.readyState == 4 && this.status == 200) {
+        var myObj = JSON.parse(this.responseText);
+        var i = select.selectedIndex;
+        //var i =0;
+        demo.innerHTML = myObj.name + " : " + myObj.age + " lives in " +
+                myObj.pets[i].animal + " called " + myObj.pets[i].name;
+
+      }
+    };
+    xmlhttp.open("GET", "demotext.txt", true);
+    xmlhttp.send();
+}
+</script>
+
+<p>Take a look at <a href="json_demo.txt" target="_blank">json_demo.txt</a></p>
+
+</body>
+</html>

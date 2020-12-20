@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+    <div id="aux1"></div>
+<h2>Get data as JSON from a PHP file on the server.</h2>
+
+<p id="demo"></p>
+
+<script>
+let aux1 = document.getElementById('aux1');
+let demo = document.getElementById("demo");
+var xmlhttp = new XMLHttpRequest();
+
+xmlhttp.onreadystatechange = function() {
+  if (this.readyState == 4 && this.status == 200) {
+    myObj = JSON.parse(this.responseText);
+    demo.innerHTML = "age: "+myObj.age;
+  }
+};
+demo.innerHTML += "heloooowww";
+aux1.innerHTML = "Hola bonito";
+xmlhttp.open("GET", "../php/server/demo_file.php", true);
+xmlhttp.send();
+</script>
+
+</body>
+</html>

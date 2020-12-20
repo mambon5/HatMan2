@@ -48,6 +48,9 @@ if ($nobjs<2) {
     $values = $values. " ('$playername[i]', $x[i], $y[i], $dir[i], $moved[i], '$clase[i]');";    
 }
 
+envia un email
+envia las variables a una ip.
+        
 //loading data from 2nd player:
 $sql = "INSERT INTO $table (name, x, y, dir, moved, clase)
 VALUES $values";

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2 id ="h2">Convert a JavaScript object into a JSON string, and send it to the server.</h2>
+
+<button id="send" onclick="senddata()"> Age person </button>
+
+<script>
+
+
+
+aux1 = document.getElementById("h2");
+var waitime = 30;
+aux1.innerHTML = "waiting " + waitime/1000 + 
+        " sec for calling the .php file.";
+var xmlhttp = new XMLHttpRequest();
+
+ var myJSON = "";
+
+
+
+    aux1.innerHTML ="sending ...";
+xmlhttp.onreadystatechange = function() {
+  if (this.readyState == 4 && this.status == 200) {
+    var myObj = JSON.parse(this.responseText);
+    
+    aux1.innerHTML = myObj.name + " : " + myObj.age + " lives in " +
+            myObj.city;
+    myObj.age += 1;
+    myJSON = JSON.stringify(myObj);
+    
+  }
+};
+
+    xmlhttp.open("GET", "phpData.txt", true);
+    xmlhttp.send();
+    
+    
+    function senddata() {
+    window.location = "../php/server/write2txt.php?y=" + myJSON; 
+    }
+
+
+</script>
+
+</body>
+</html>
